@@ -136,8 +136,8 @@ public class StripeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void deviceSupportsAndroidPay(final Promise promise) {
-    if(!isPlayServicesAvailable()){
-      promise.reject(TAG, "Play services not available!");
+    if (!isPlayServicesAvailable()){
+      promise.reject(TAG, "Play services are not available!");
       return;
     }
     if (googleApiClient != null && googleApiClient.isConnected()) {
@@ -316,7 +316,7 @@ public class StripeModule extends ReactContextBaseJavaModule {
   private boolean isPlayServicesAvailable() {
     GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
     int result = googleAPI.isGooglePlayServicesAvailable(getCurrentActivity());
-    if(result != ConnectionResult.SUCCESS) {
+    if (result != ConnectionResult.SUCCESS) {
       return false;
     }
     return true;
